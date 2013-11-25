@@ -32,6 +32,7 @@ class UserController extends Zend_Controller_Action
     			$userdata->setState($form->getValue('state'));
     			$userdata->setIdusertype($form->getValue('idusertype'));
     			
+    			
     			$user = new Application_Model_UserMapper();
     			$user->save($userdata);
     			$this->_helper->redirector('index');
@@ -103,8 +104,37 @@ class UserController extends Zend_Controller_Action
     		$this->view->user =$user->find($id, $userdata);
     	}
     }
-
-
+    
+    public function registerAction()
+    {
+    $form = new Application_Form_Register();
+    
+    	$form->submit->setLabel('Register');
+    	$this->view->form = $form;
+    	
+    	if ($this->getRequest()->isPost()) {
+    		$formData = $this->getRequest()->getPost();
+    		if ($form->isValid($formData)) {
+    			
+    			$userdata = new Application_Model_User();
+    			$userdata->setDisplay_name($form->getValue('display_name'));
+    			$userdata->setEmail($form->getValue('email'));
+    			$userdata->setPassword($form->getValue('password'));
+    			$userdata->setState($form->getValue('genre'));
+    			$userdata->setIduser($form->getValue('iduser'));
+    			$userdata->setDescription($form->getValue('description'));
+				$userdata->setStatus($form->getValue('status'));
+    			$userdata->getGenre($form->getValue('genre'));
+    			
+    			$user = new Application_Model_UserMapper();
+    			$user->save($userdata);
+    			$this->_helper->redirector('index');
+    		} else {
+    			$form->populate($formData);
+    		}
+    	}
+    }
+   
 }
 
 

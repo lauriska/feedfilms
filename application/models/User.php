@@ -7,10 +7,13 @@ class Application_Model_User
     protected $_email;
     protected $_iduser;
     protected $_state;
-   // protected $_token;
+    protected $_token;
     //protected $_timeout;
     protected $_idusertype;
-
+    protected $_genre;
+    protected $_photo;
+    protected $_status;
+    protected $_description;
     
     public function __construct(array $options = null)
     {
@@ -90,6 +93,35 @@ class Application_Model_User
 	public function getIdusertype() {
 		return $this->_idusertype;
 	}
+	
+	/**
+	 * 
+	 */
+	public function getGenre(){
+		return $this->_genre;
+	}
+	
+	/**
+	 * 
+	 */
+	public function getPhoto(){
+		return $this->_photo;
+	}
+	
+	/**
+	 * 
+	 */
+	public function getStatus() {
+		return $this->_status;
+	}
+	
+	public function getToken() {
+		return $this->_token;
+	}
+	
+	public function getDescription() {
+		return  $this->_description;
+	}
 
 	/**
 	 * @param field_type $_display_name
@@ -122,7 +154,7 @@ class Application_Model_User
 	/**
 	 * @param field_type $_state
 	 */
-	public function setState($_state) {
+	public function setState ($_state) {
 		$this->_state = $_state;
 	}
 
@@ -132,9 +164,34 @@ class Application_Model_User
 	public function setIdusertype($_idusertype) {
 		$this->_idusertype = $_idusertype;
 	}
-
 	
+	/**
+	 * 
+	 * @param field_type $_genre
+	 */
+	public function setGenre ($_genre) {
+		$this->_genre = $_genre;
+	}
+	
+	/**
+	 * 
+	 * @param field_type $_status
+	 */
+	public function setStatus ($_status) {
+		$this->_status = $_status;
+	}
+	
+	/**
+	 * 
+	 * @param field_types $_token
+	 */	
+	public function setToken($_token) {
+		$this->_token = $_token;
+	}
 
+	public function setDescription ($_description) {
+		$this->_description = $_description;
+	}
    
 }
 

@@ -31,11 +31,15 @@ class Application_Model_UserMapper
             'email'   => $user->getEmail(),
         	'password' => $user->getPassword(),
         	'display_name' => $user->getDisplay_name(),
+        	'description' => $user->getDescription(),
             'state' 	=> $user->getState(),
             'idusertype' => $user->getIdusertype(),
+        	'status' => $user->getStatus(),
+        	'genre' => $user->getGenre(),
+        	'token' => $user->getToken(),
         );
 
-        if (null === ($id = $user->getIduser())) {
+        if (null == ($id = $data["iduser"])) {
             unset($data['iduser']);
             $this->getDbTable()->insert($data);
         } else {
@@ -54,8 +58,12 @@ class Application_Model_UserMapper
         $user->setEmail($row->email);
         $user->setPassword($row->password);
         $user->setDisplay_name($row->display_name);
+        $user->setDescription($row->description);
         $user->setState($row->state);
         $user->setIdusertype($row->idusertype);
+        $user->setStatus($row->status);
+        $user->setGenre($row->genre);
+        $user->setToken($row->token);
         
         return $row->toArray();
     }
@@ -71,8 +79,11 @@ class Application_Model_UserMapper
             $entry->setPassword($row->password);
             $entry ->setEmail($row->email);
             $entry->setDisplay_name($row->display_name);
+            $entry->setDescription($row->description);
         	$entry->setState($row->state);
         	$entry->setIdusertype($row->idusertype);
+        	$entry->setToken($row->token);
+        	$entry->setGenre($row->genre);
             $entries[] = $entry;
         }
         return $entries;

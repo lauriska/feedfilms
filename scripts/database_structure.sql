@@ -92,6 +92,7 @@ CREATE TABLE IF NOT EXISTS `feedfilms`.`comments` (
 
 -- Dump completed on 2013-11-20 19:58:50
 
+DROP TABLE IF EXISTS `festivales`;
 DROP TABLE IF EXISTS `festivals`;
 CREATE TABLE `festivals` ( 
 	`idfestival` int(11) NOT NULL AUTO_INCREMENT,
